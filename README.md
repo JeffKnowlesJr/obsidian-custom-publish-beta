@@ -320,39 +320,3 @@ If you need help or have questions:
 1. Check the [documentation](ObsidianCustomPublish/docs/)
 2. Open an [issue](../../issues)
 3. Join our [community](https://discord.gg/example)
-
----
-
-Made with ❤️ by the Obsidian Custom Publish team
-
-### 🐶 **Jellybean & Charlotte: The Cloud Warriors**
-
-**Meet Jellybean**: A tech-savvy dog with a nose for adventure. Jellybean's mission? To conquer the cloud and ensure every note from Obsidian reaches the digital frontier.
-
-**Enter Charlotte**: A powerhouse of a dog, Charlotte is Jellybean's trusted ally. With the heart of a gamer and the grit of a rancher, Charlotte brings a unique edge to the team.
-
-**Step 1: Obsidian Vault**  
-In the heart of the digital ranch, Jellybean and Charlotte prepare their notes. With the precision of a gamer, they ensure every detail is ready for the cloud.
-
-**Step 2: Sync to S3**  
-With a howl that echoes across the digital plains, Jellybean and Charlotte activate the `pre-push` hook. The `sync-to-s3.sh` script runs like a well-oiled machine, and Charlotte ensures every byte is securely uploaded to the S3 bucket.
-
-**Step 3: IAM Policy Patrol**  
-Charlotte, the guardian of the cloud, ensures the `AmplifyS3ContentAccess` policy is locked and loaded on the `amplifyconsole-backend-role`. No unauthorized access gets past this duo!
-
-**Step 4: Amplify's Arena**  
-As Amplify gears up for the build, Jellybean and Charlotte are there to guide the process. The `amplify.yml` file is their battle plan, ensuring Amplify pulls the right content from S3.
-
-**Step 5: The Grand Build**  
-With a triumphant bark, Charlotte watches as Amplify builds the site using the content from S3. Jellybean and Charlotte stand victorious as the site goes live, ready to conquer the digital world.
-
-**Jellybean & Charlotte's Checklist**:
-
-- 🐾 IAM policy attached? Locked and loaded!
-- 🐾 Content synced to S3? Mission accomplished!
-- 🐾 Amplify pulling content? On target!
-- 🐾 Site built and deployed? Victory!
-
-**Jellybean & Charlotte's Motto**: "In the cloud, we trust. On the ranch, we thrive. Together, we conquer!"
-
-**@DavKen**: Jellybean and Charlotte are ready for the next level. Join them on their epic cloud quest! 🐶🎮🤠
