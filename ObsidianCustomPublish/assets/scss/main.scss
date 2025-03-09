@@ -1,0 +1,63 @@
+// Import variables and mixins first
+@import "variables";
+@import "mixins";
+
+// Import custom styles
+@import "custom";
+
+// Theme variables
+:root {
+  --body-background: #fff;
+  --body-font-color: #000;
+  --color-link: #05b;
+  --color-visited-link: #8440f1;
+}
+
+// Dark theme support
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-background: #343a40;
+    --body-font-color: #e9ecef;
+    --color-link: #84b2ff;
+    --color-visited-link: #b88dff;
+  }
+}
+
+// Base styles
+body {
+  background-color: var(--body-background);
+  color: var(--body-font-color);
+  font-family: $font-family-base;
+  @include body-text;
+}
+
+// Links
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  
+  &:visited {
+    color: var(--color-visited-link);
+  }
+}
+
+// Headings
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+// Container
+.container {
+  @include container;
+}
+
+// Responsive adjustments
+@include respond-to(md) {
+  .container {
+    padding: 0 $container-padding * 2;
+  }
+} 

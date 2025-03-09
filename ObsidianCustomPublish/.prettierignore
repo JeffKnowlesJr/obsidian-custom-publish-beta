@@ -1,0 +1,4 @@
+*.scss
+_templates/
+**/_templates/
+.obsidian/

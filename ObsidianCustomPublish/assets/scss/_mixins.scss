@@ -1,0 +1,42 @@
+// Responsive Mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Typography Mixins
+@mixin heading-1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: $spacing-unit;
+}
+
+@mixin heading-2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: $spacing-unit;
+}
+
+@mixin body-text {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  margin-bottom: $spacing-unit;
+}
+
+// Layout Mixins
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+} 

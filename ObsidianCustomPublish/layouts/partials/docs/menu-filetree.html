@@ -1,0 +1,137 @@
+{{ $bookSection := default "docs" .Site.Params.BookSection  }}
+{{ if eq $bookSection "*" }}
+  {{ $bookSection = "/" }}{{/* Backward compatibility */}}
+{{ end }}
+
+<!-- Custom section listing that doesn't require _index.md files -->
+<ul class="book-sections">
+  {{ range (slice "Journal" "Documents" "Templates" "Workspace" "References" "Archive") }}
+    {{ $section := . }}
+    {{ $sectionPath := printf "/%s" . }}
+    {{ $currentPage := $ }}
+    {{ $isActive := eq $currentPage.RelPermalink $sectionPath }}
+    {{ $inSection := in $currentPage.RelPermalink $sectionPath }}
+    
+    <!-- Check if section folder exists -->
+    {{ $contentPath := printf "content%s" $sectionPath }}
+    {{ if fileExists $contentPath }}
+      {{ $items := readDir $contentPath }}
+      {{ $hasContent := false }}
+      
+      <!-- Check if section has any valid content -->
+      {{ range $items }}
+        {{ if or .IsDir (and (ne .Name "_index.md") (findRE "\\.md$" .Name)) }}
+          {{ $hasContent = true }}
+        {{ end }}
+      {{ end }}
+      
+      <!-- Only show section if it has content -->
+      {{ if $hasContent }}
+        <li class="{{ if $inSection }}active{{ end }}">
+          <input type="checkbox" id="section-{{ . }}" class="toggle" {{ if $inSection }}checked{{ end }} />
+          <label for="section-{{ . }}">{{ . }}</label>
+          
+          <ul>
+            {{ range $items }}
+              {{ if .IsDir }}
+                {{ $dirName := .Name }}
+                {{ $dirPath := printf "%s/%s" $sectionPath $dirName }}
+                {{ $dirContentPath := printf "content%s" $dirPath }}
+                
+                <!-- Check if directory has any content -->
+                {{ $hasDirContent := false }}
+                {{ if fileExists $dirContentPath }}
+                  {{ $dirItems := readDir $dirContentPath }}
+                  {{ range $dirItems }}
+                    {{ if or .IsDir (and (ne .Name "_index.md") (findRE "\\.md$" .Name)) }}
+                      {{ $hasDirContent = true }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+                
+                <!-- Only show directory if it has content -->
+                {{ if $hasDirContent }}
+                  {{ $hasIndex := fileExists (printf "content%s/_index.md" $dirPath) }}
+                  <li>
+                    {{ if $hasIndex }}
+                      <a href="{{ $dirPath }}/" class="{{ if in $currentPage.RelPermalink $dirPath }}active{{ end }}">{{ $dirName }}</a>
+                    {{ else }}
+                      <span class="non-link">{{ $dirName }}</span>
+                    {{ end }}
+                  </li>
+                {{ end }}
+              {{ else if and (ne .Name "_index.md") (findRE "\\.md$" .Name) }}
+                {{ $fileName := replace .Name ".md" "" }}
+                {{ $filePath := printf "%s/%s" $sectionPath $fileName }}
+                <li>
+                  <a href="{{ $filePath }}" class="{{ if eq $currentPage.RelPermalink (printf "%s/" $filePath) }}active{{ end }}">{{ $fileName }}</a>
+                </li>
+              {{ end }}
+            {{ end }}
+          </ul>
+        </li>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</ul>
+
+<style>
+  .book-sections {
+    padding-left: 0;
+  }
+  
+  .book-sections ul {
+    padding-left: 1rem;
+  }
+  
+  .book-sections li {
+    list-style: none;
+    margin: 0.6rem 0;
+    line-height: 1.3;
+  }
+  
+  .toggle {
+    display: none;
+  }
+  
+  .toggle + label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.15rem 0;
+  }
+  
+  .non-link {
+    color: #999;
+    font-style: italic;
+  }
+  
+  .active > a {
+    font-weight: bold;
+  }
+</style>
+
+<script id="book-sections-menu-script">
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggles = document.querySelectorAll('.book-sections .toggle');
+    
+    toggles.forEach(toggle => {
+      toggle.addEventListener('change', function() {
+        const parent = this.parentElement;
+        const ul = parent.querySelector('ul');
+        
+        if (ul) {
+          if (this.checked) {
+            ul.style.display = 'block';
+          } else {
+            ul.style.display = 'none';
+          }
+        }
+      });
+      
+      // Initial state
+      toggle.dispatchEvent(new Event('change'));
+    });
+  });
+</script>

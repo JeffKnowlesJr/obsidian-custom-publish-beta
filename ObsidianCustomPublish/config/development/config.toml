@@ -1,0 +1,42 @@
+# Development Configuration
+baseURL = "http://localhost:1313/"
+environment = "development"
+
+# Build settings
+buildDrafts = true
+buildFuture = true
+buildExpired = true
+
+# Output settings
+outputs = ["HTML", "RSS", "JSON"]
+
+# Debug settings
+debug = true
+verbose = true
+
+# Performance settings
+minify = false
+
+# Analytics and parameters
+[params]
+  analytics = true
+  GoogleAnalytics = "G-DNHQYVXLJL"
+  EnableDisqus = false
+
+# Cache settings
+[caches]
+  [caches.getjson]
+    maxAge = 0
+  [caches.getcsv]
+    maxAge = 0
+  [caches.images]
+    maxAge = 0
+  [caches.assets]
+    maxAge = 0
+
+# Development cache settings
+[cache]
+  [cache.assets]
+    maxAge = 0  # No caching in development
+  [cache.images]
+    maxAge = 0  # No caching in development 

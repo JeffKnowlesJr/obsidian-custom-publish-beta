@@ -1,0 +1,105 @@
+# Hugo generated directories
+/public/
+/ObsidianCustomPublish/public/
+/resources/_gen/
+/ObsidianCustomPublish/resources/_gen/
+/assets/jsconfig.json
+/ObsidianCustomPublish/assets/jsconfig.json
+/.hugo_build.lock
+/ObsidianCustomPublish/.hugo_build.lock
+
+# Obsidian vault directory
+Link/
+
+# Obsidian - complete exclusion
+**/.obsidian/**
+.obsidian/
+**/.obsidian
+.obsidian/**
+.trash
+**/.trash
+.DS_Store
+**/.DS_Store
+*.css.map
+**/*.css.map
+
+# Obsidian workspace and settings
+*.workspace
+**/*.workspace
+workspace
+**/workspace
+workspace.json
+**/workspace.json
+.mobile.json
+**/.mobile.json
+graph.json
+**/graph.json
+
+# Obsidian plugins and themes
+**/plugins/
+**/.obsidian/themes/
+**/.obsidian.vimrc
+**/.obsidian.mobile
+**/.obsidian.iphone
+**/.obsidian.ipad
+**/.obsidian.android
+**/.hotreload
+
+# Template directories
+_templates/
+content/_templates/
+**/templates/
+**/_templates/
+_obsidian_templates/
+**/templater/
+**/*.template
+**/*.template.*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE/Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.temp
+*.sync-conflict*
+.syncthing.*
+.sync-conflict*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Keep these directories
+!content/
+!static/
+!layouts/
+!assets/
+!data/
+!i18n/
+
+# Sensitive content directories
+private/
+sensitive/
+personal/
+**/_private/
+**/_sensitive/
+**/_personal/
+
+# Node modules
+node_modules/

@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article class="markdown">
+  {{ if eq .Section "journal" }} {{ $title := .Title }} {{ $date := time.Format
+  "2006-01-02-monday" .Date }}
+  <h1>{{ $date | lower }}</h1>
+  {{ else }}
+  <h1>{{ .Title }}</h1>
+  {{ end }} {{ .Content }}
+</article>
+{{ end }}

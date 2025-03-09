@@ -1,0 +1,14 @@
+{{- $current := . }} {{- $prev := "" }} {{- $next := "" }} {{- if
+$current.Params.previous }} {{- $prev = replace $current.Params.previous "[[" ""
+}} {{- $prev = replace $prev "]]" "" }} {{- $prev = lower $prev }} {{- end }}
+{{- if $current.Params.next }} {{- $next = replace $current.Params.next "[[" ""
+}} {{- $next = replace $next "]]" "" }} {{- $next = lower $next }} {{- end }}
+{{- if or $prev $next }}
+<p>
+  {{- if $prev }} &laquo;
+  <a class="wiki-link journal" href="/_journal/{{ $prev }}">{{ $prev }}</a>
+  {{- end }} {{- if and $prev $next }} | {{- end }} {{- if $next }}
+  <a class="wiki-link journal" href="/_journal/{{ $next }}">{{ $next }}</a>
+  &raquo; {{- end }}
+</p>
+{{- end }}

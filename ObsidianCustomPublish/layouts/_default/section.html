@@ -1,0 +1,122 @@
+{{ define "main" }}
+<h1>{{ path.Base .RelPermalink | title }}</h1>
+
+<div class="markdown book-article">
+  {{ with .Content }} {{ . }} {{ else }}
+  <!-- Default content for sections without content -->
+  <p>Contents of this directory:</p>
+  {{ end }} {{ $section := .RelPermalink }} {{ $contentPath := printf
+  "content%s" $section }} {{ if fileExists $contentPath }}
+  <div class="directory-content">
+    {{ $items := readDir $contentPath }} {{ if $items }}
+    <!-- List directories first -->
+    {{ $dirs := slice }} {{ $files := slice }} {{ range $items }} {{ if .IsDir
+    }}
+    <!-- Check if directory has content before adding it -->
+    {{ $dirPath := printf "%s%s" $contentPath .Name }} {{ $hasContent := false
+    }} {{ if fileExists $dirPath }} {{ $subItems := readDir $dirPath }} {{ range
+    $subItems }} {{ if or .IsDir (and (ne .Name "_index.md") (findRE "\\.md$"
+    .Name)) }} {{ $hasContent = true }} {{ end }} {{ end }} {{ if $hasContent }}
+    {{ $dirs = $dirs | append (dict "Name" .Name "Count" (len (readDir
+    $dirPath))) }} {{ end }} {{ end }} {{ else if ne .Name "_index.md" }} {{
+    $files = $files | append . }} {{ end }} {{ end }} {{ if $dirs }}
+    <h3>Directories</h3>
+    <ul class="directory-list">
+      {{ range $dirs }}
+      <li class="directory-item">
+        <span class="directory-name">{{ .Name | title }}</span>
+        {{ if gt .Count 0 }}
+        <span class="item-count">({{ .Count }} items)</span>
+        {{ end }}
+
+        <!-- Check if there's an _index.md to make it clickable -->
+        {{ $indexPath := printf "%s%s/_index.md" $contentPath .Name }} {{ if
+        fileExists $indexPath }}
+        <a href="{{ $section }}{{ .Name }}/" class="view-dir-link">View</a>
+        {{ end }}
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }} {{ if $files }}
+    <h3>Files</h3>
+    <ul class="file-list">
+      {{ range $files }} {{ $fileName := replace .Name ".md" "" }}
+      <li class="file-item">
+        <a href="{{ $section }}{{ $fileName }}">{{ $fileName | title }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }} {{ if and (not $dirs) (not $files) }}
+    <p>This directory is empty.</p>
+    {{ end }} {{ else }}
+    <p>This directory is empty.</p>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p>Directory not found.</p>
+  {{ end }}
+</div>
+
+<style>
+  .directory-content {
+    margin-top: 20px;
+  }
+
+  .directory-list,
+  .file-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  .directory-item,
+  .file-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  [data-theme='dark'] .directory-item,
+  [data-theme='dark'] .file-item {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .directory-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .directory-name:before {
+    content: '📁';
+    margin-right: 8px;
+  }
+
+  .file-item a:before {
+    content: '📄';
+    margin-right: 8px;
+  }
+
+  .item-count {
+    color: #888;
+    margin-left: 8px;
+    font-size: 0.9em;
+  }
+
+  .view-dir-link {
+    margin-left: auto;
+    padding: 2px 8px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    font-size: 0.8em;
+    text-decoration: none;
+  }
+
+  [data-theme='dark'] .view-dir-link {
+    background-color: #343a40;
+  }
+
+  .view-dir-link:hover {
+    text-decoration: underline;
+  }
+</style>
+{{ end }}

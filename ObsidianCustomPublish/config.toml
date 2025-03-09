@@ -1,0 +1,72 @@
+baseURL = 'https://www.jeffs.link/'
+languageCode = 'en-us'
+title = "Jeff's Link"
+theme = 'hugo-book'
+
+# Set content directory to Link folder
+contentDir = '../Link'
+
+# Book theme specific options
+[params]
+  # Theme and layout
+  BookTheme = 'auto'        # auto/dark/light
+  BookToC = true           # Table of Contents
+  BookSection = '*'        # Include all sections in menu
+  
+  # Search functionality
+  BookSearch = true
+  BookSearchExclude = ['_templates']
+  
+  # Code highlighting
+  BookCodeCopy = true     # Enable copy button for code blocks
+  
+  # Hide "Edit this page" links
+  BookEditPath = ''
+  
+  # Collapsible menu
+  BookMenuBundle = '/menu'
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+      hardWraps = false
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
+      wikiLinks = true
+      autoHeadingID = true
+      autoHeadingIDType = "github"
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      strikethrough = true
+      table = true
+      taskList = true
+      typographer = true
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "monokai"
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+[permalinks]
+  '_journal' = '/journal/:filename'
+  'Content/_journal' = '/journal/:filename'
+
+[security]
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
+
+  [security.funcs]
+    getenv = ['^HUGO_']
+
+googleAnalytics = "G-DNHQYVXLJL" 

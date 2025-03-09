@@ -1,0 +1,50 @@
+/* Custom styles */
+:root {
+  --body-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --mono-font: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo,
+    monospace;
+}
+
+/* Menu customization */
+.book-menu {
+  font-family: var(--body-font);
+}
+
+.book-menu a.active {
+  font-weight: bold;
+}
+
+/* Content customization */
+.book-page {
+  font-family: var(--body-font);
+}
+
+/* Journal navigation */
+.journal-nav {
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--gray-200);
+  border-top: 1px solid var(--gray-200);
+  text-align: center;
+}
+
+.journal-nav a {
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+.journal-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode customization */
+[data-theme='dark'] {
+  --body-background: #1a1a1a;
+  --body-font-color: #e3e3e3;
+}
+
+/* Mobile menu button */
+#menu-control {
+  display: block;
+}

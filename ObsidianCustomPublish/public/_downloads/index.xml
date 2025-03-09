@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jeff's Link</title><link>https://jeffs.link/_downloads/</link><description>Recent content on Jeff's Link</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://jeffs.link/_downloads/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://jeffs.link/_downloads/obsidian_templater_cheat_sheet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://jeffs.link/_downloads/obsidian_templater_cheat_sheet/</guid><description>&lt;h1 id="templater-cheat-sheet">
+ Templater Cheat Sheet
+ &lt;a class="anchor" href="#templater-cheat-sheet">#&lt;/a>
+&lt;/h1>
+&lt;p>for the &lt;em>Obsidian Plugin &amp;ldquo;Templater&amp;rdquo;&lt;/em>&lt;/p>
+&lt;ul>
+&lt;li>[[#Start a command snippet|Start a command snippet]]&lt;/li>
+&lt;li>[[#Functions in Templater|Functions in Templater]]
+&lt;ul>
+&lt;li>[[#Types of functions|Types of functions]]&lt;/li>
+&lt;li>[[#Object hierarchy|Object hierarchy]]&lt;/li>
+&lt;li>[[#Function invocation|Function invocation]]&lt;/li>
+&lt;li>[[#Function documentation syntax|Function documentation syntax]]&lt;/li>
+&lt;li>[[#Function Modules|Function Modules]]
+&lt;ul>
+&lt;li>[[#Config Module|Config Module]]&lt;/li>
+&lt;li>[[#Date module|Date module]]&lt;/li>
+&lt;li>[[#File Module|File Module]]&lt;/li>
+&lt;li>[[#Frontmatter Module|Frontmatter Module]]&lt;/li>
+&lt;li>[[#Obsidian Module|Obsidian Module]]&lt;/li>
+&lt;li>[[#Systems Module|Systems Module]]&lt;/li>
+&lt;li>[[#Web Module|Web Module]]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>[[#User Functions|User Functions]]
+&lt;ul>
+&lt;li>[[#Script User Functions|Script User Functions]]&lt;/li>
+&lt;li>[[#System Commands|System Commands]]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>[[#Command Types|Command Types]]
+&lt;ul>
+&lt;li>[[#Dynamic commands|Dynamic commands]]&lt;/li>
+&lt;li>[[#Execution Commands|Execution Commands]]&lt;/li>
+&lt;li>[[#Whitespace Control|Whitespace Control]]&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>based on the 
+ &lt;a href="https://silentvoid13.github.io/Templater/introduction.html">Official Documentation&lt;/a>&lt;/p></description></item></channel></rss>

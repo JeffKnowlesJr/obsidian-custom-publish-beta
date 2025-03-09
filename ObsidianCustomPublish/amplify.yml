@@ -1,0 +1,31 @@
+version: 1
+env:
+  variables:
+    # Application versions
+    HUGO_VERSION: 0.145.0
+    # Site configuration
+    HUGO_BASEURL: https://www.jeffs.link
+    HUGO_ENV: production
+    # Time zone
+    TZ: America/Los_Angeles
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        # Install Hugo
+        - wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
+        - tar -xf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
+        - export PATH=$PWD:$PATH
+        - hugo version
+    build:
+      commands:
+        # Build site
+        - hugo --config config/production/config.toml --minify
+  artifacts:
+    baseDirectory: public
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - public/**/*

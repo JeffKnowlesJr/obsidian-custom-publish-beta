@@ -1,0 +1,244 @@
+/* Obsidian-like Dark Theme */
+@mixin theme-dark {
+  --gray-100: #242424;
+  --gray-200: #7a7a7a;
+  --gray-500: #5c5c5c;
+
+  --color-link: #a6a1e6;
+  --color-visited-link: #9e98e9;
+
+  --body-background: #1e1e1e;
+  --body-font-color: #dcddde;
+
+  --icon-filter: brightness(0) invert(1);
+
+  --hint-color-info: #5f8fff;
+  --hint-color-warning: #ff9100;
+  --hint-color-danger: #ff5f5f;
+
+  // Sidebar
+  --nav-background: #262626;
+  --nav-link-color: #dcddde;
+  --nav-border-color: #404040;
+
+  // Search
+  --search-background: #242424;
+  --search-border-color: #404040;
+
+  // Code blocks
+  --code-background: #242424;
+  --code-color: #dcddde;
+  --code-block-background: #242424;
+  --code-block-border-color: transparent;
+
+  // Tables
+  --table-border-color: #404040;
+  --table-header-background: #262626;
+  --table-alternate-background: #2a2a2a;
+
+  // Scrollbar
+  --scrollbar-background: #262626;
+  --scrollbar-thumb: #404040;
+
+  // Journal
+  --journal-date-color: #7a7a7a;
+  --journal-nav-color: var(--body-font-color);
+  --journal-nav-hover-color: var(--color-link);
+
+  // Menu
+  --menu-caret-color: #666666;
+  --folder-label-color: var(--body-font-color);
+  --folder-label-hover-color: var(--color-link);
+  --folder-label-open-color: var(--hint-color-info);
+
+  // Wiki embeds
+  --wiki-embed-background: #1a1a1a;
+  --wiki-embed-border: #333333;
+}
+
+[data-theme='dark'] {
+  @include theme-dark;
+
+  .wiki-embed {
+    background: var(--wiki-embed-background);
+    border: 1px solid var(--wiki-embed-border);
+    border-radius: 4px;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .wiki-embed-error {
+    color: var(--hint-color-danger);
+    padding: 0.5rem;
+    border: 1px solid var(--hint-color-danger);
+    border-radius: 4px;
+    margin: 1rem 0;
+  }
+
+  .journal-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    color: var(--journal-nav-color);
+    font-size: 0.9em;
+
+    a {
+      color: var(--journal-nav-color);
+      text-decoration: none;
+      transition: color 0.15s ease;
+
+      &:hover {
+        color: var(--journal-nav-hover-color);
+      }
+    }
+
+    .prev {
+      margin-right: auto;
+    }
+
+    .next {
+      margin-left: auto;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme='light']) {
+    @include theme-dark;
+  }
+}
+
+// Custom scrollbar for dark mode
+[data-theme='dark'] {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-500);
+  }
+}
+
+// Basic styling for code and content
+[data-theme='dark'] {
+  .book-search input {
+    border: 1px solid var(--search-border-color);
+    background: var(--search-background);
+    color: var(--body-font-color);
+    &::placeholder {
+      color: var(--gray-200);
+    }
+  }
+
+  .markdown {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: var(--body-font-color);
+    }
+
+    // Code block styling
+    pre {
+      background-color: var(--code-block-background) !important;
+      border: none;
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    code {
+      background-color: var(--code-background);
+      border: none;
+      border-radius: 3px;
+      padding: 0.2em 0.4em;
+    }
+  }
+
+  a {
+    color: var(--color-link);
+
+    &:visited {
+      color: var(--color-visited-link);
+    }
+  }
+
+  .journal-date {
+    color: var(--journal-date-color);
+    font-size: 0.9em;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--nav-border-color);
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* Wiki Links */
+.wiki-link {
+  color: var(--color-link);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--color-link);
+
+  &:hover {
+    border-bottom-style: solid;
+  }
+
+  &.journal {
+    color: #7a7a7a;
+    font-size: 0.9em;
+  }
+
+  &.timestamp {
+    color: #666;
+    font-style: italic;
+  }
+}
+
+/* Menu Arrows Fix - Completely override all menu arrow styles */
+html body .container .book-menu .book-menu-content nav ul li .toggle + label {
+  /* First, ensure only left arrows are displayed */
+  &::before {
+    content: "▶" !important;
+    font-size: 0.7em !important;
+    margin-right: 0.5em !important;
+    transition: transform 0.15s ease !important;
+    display: inline-block !important;
+  }
+  
+  &::after {
+    content: "" !important;
+    display: none !important;
+  }
+}
+
+html body .container .book-menu .book-menu-content nav ul li .toggle:checked + label {
+  /* Ensure left arrow rotates when expanded */
+  &::before {
+    transform: rotate(90deg) !important;
+  }
+  
+  &::after {
+    content: "" !important;
+    display: none !important;
+  }
+}
+
+/* Handle all other potential instances in the theme */
+.book-menu input.toggle + label::after,
+.book-menu input.toggle:checked + label::after,
+body[dir="rtl"] .book-menu input.toggle + label::after,
+body[dir="rtl"] .book-menu input.toggle:checked + label::after {
+  content: "" !important;
+  display: none !important;
+}
+

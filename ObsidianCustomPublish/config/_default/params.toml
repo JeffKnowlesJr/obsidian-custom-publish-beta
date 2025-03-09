@@ -1,0 +1,17 @@
+# Book theme parameters
+BookTheme = "auto"
+BookToC = true
+BookSection = "_files"
+BookSearch = true
+BookComments = false
+BookPortableLinks = true
+BookServiceWorker = false
+BookTranslatedOnly = false
+
+# Git repository
+BookRepo = "https://github.com/JeffKnowlesJr/custom-obsidian-publish"
+BookEditPath = "edit/main"
+
+# Custom parameters
+customCSS = ["css/custom.css"]
+customJS = ["js/custom.js"] 

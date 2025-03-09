@@ -1,0 +1,51 @@
+# Production Configuration
+baseURL = "https://jeffs.link/"
+environment = "production"
+
+# Build settings
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+# Output settings
+outputs = ["HTML", "RSS", "JSON"]
+
+# Performance settings
+minify = true
+
+# Cache settings
+[caches]
+  [caches.getjson]
+    maxAge = 3600
+  [caches.getcsv]
+    maxAge = 3600
+  [caches.images]
+    maxAge = 86400
+  [caches.assets]
+    maxAge = 86400
+
+# Analytics and monitoring
+[params]
+  analytics = true
+  GoogleAnalytics = "G-DNHQYVXLJL"
+  EnableDisqus = true
+  DisqusShortname = "your-disqus-shortname"  # Replace with your Disqus shortname
+
+# Security headers
+[security]
+  enableInlineShortcodes = false
+  [security.exec]
+    allow = ["^git$"]
+  [security.funcs]
+    getenv = []
+  [security.http]
+    methods = ["GET", "HEAD", "OPTIONS"]
+    [security.http.headers]
+      X-Frame-Options = "DENY"
+      X-XSS-Protection = "1; mode=block"
+      X-Content-Type-Options = "nosniff"
+      Referrer-Policy = "strict-origin-when-cross-origin"
+      Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;"
+
+# Performance settings
+enableRobotsTXT = true 

@@ -1,0 +1,20 @@
+{{- $destination := .Destination }}
+{{- $isRemote := or (in .Destination ":") (strings.HasPrefix .Destination "//") }}
+{{- if not $isRemote }}
+  {{- $url := urls.Parse .Destination }}
+  {{- $path := strings.TrimSuffix "/_index.md" $url.Path }}
+  {{- $path = strings.TrimSuffix "/_index" $path }}
+  {{- $path = strings.TrimSuffix ".md" $path }}
+  {{- $path = lower $path }}
+  {{- if strings.Contains $path "/_journal/" }}
+    {{- $path = replaceRE "/_journal/([0-9]{4})-([0-9]{2})-([0-9]{2})-([^/]+)" (printf "/_journal/${1}-${2}-${3}-%s" (lower "$4")) $path }}
+  {{- end }}
+  {{- $page := .Page.GetPage $path }}
+  {{- if $page }}
+    {{- $destination = $page.RelPermalink }}
+    {{- if $url.Fragment }}
+      {{- $destination = print $destination "#" $url.Fragment }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+<a class="wiki-link{{ if strings.Contains $destination "/_journal/" }} journal{{ end }}" href="{{ $destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a> 

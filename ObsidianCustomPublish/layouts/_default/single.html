@@ -1,0 +1,7 @@
+{{ define "main" }}
+<article class="markdown">
+  <h1>{{ .Title }}</h1>
+  {{- if strings.Contains .RelPermalink "/_journal/" }} {{- partial
+  "journal-nav.html" . }} {{- end }} {{- .Content }}
+</article>
+{{ end }}

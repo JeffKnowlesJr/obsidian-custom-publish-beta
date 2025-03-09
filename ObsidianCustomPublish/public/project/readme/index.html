@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Documentation for Jeff&#39;s Link - Personal Knowledge Base">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/project/readme/">
+  <meta property="og:site_name" content="Jeff&#39;s Link">
+  <meta property="og:title" content="Project Documentation">
+  <meta property="og:description" content="Documentation for Jeff&#39;s Link - Personal Knowledge Base">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="project">
+    <meta property="article:published_time" content="2024-03-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-03-07T00:00:00+00:00">
+<title>Project Documentation | Jeff&#39;s Link</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/project/readme/">
+<link rel="stylesheet" href="/book.min.6cc7c0b37fcfd355a53ed87af0351dbfdddb1031add66f66d745bb25e3687894.css" integrity="sha256-bMfAs3/P01WlPth68DUdv93bEDGt1m9m10W7JeNoeJQ=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.bcba08152205c011e09fc7bc988dc9bf026b773b32764a0948876e3048f6bdd4.js" integrity="sha256-vLoIFSIFwBHgn8e8mI3JvwJrdzsydkoJSIduMEj2vdQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+   
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Project Documentation</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#version-information">Version Information</a></li>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#11-overview">1.1 Overview</a></li>
+        <li><a href="#12-features">1.2 Features</a></li>
+        <li><a href="#13-target-audience">1.3 Target Audience</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a>
+      <ul>
+        <li><a href="#21-system-diagram">2.1 System Diagram</a></li>
+        <li><a href="#22-components">2.2 Components</a></li>
+      </ul>
+    </li>
+    <li><a href="#prerequisites">Prerequisites</a>
+      <ul>
+        <li><a href="#required-tools">Required Tools</a></li>
+        <li><a href="#optional-tools">Optional Tools</a></li>
+        <li><a href="#aws-requirements">AWS Requirements</a></li>
+        <li><a href="#33-repository-setup">3.3 Repository Setup</a></li>
+      </ul>
+    </li>
+    <li><a href="#project-structure">Project Structure</a></li>
+    <li><a href="#development-guide">Development Guide</a>
+      <ul>
+        <li><a href="#51-getting-started">5.1 Getting Started</a></li>
+        <li><a href="#52-development-workflow">5.2 Development Workflow</a></li>
+        <li><a href="#53-navigation-and-templates">5.3 Navigation and Templates</a></li>
+        <li><a href="#54-theme-customization">5.4 Theme Customization</a></li>
+      </ul>
+    </li>
+    <li><a href="#build-process">Build Process</a>
+      <ul>
+        <li><a href="#local-build">Local Build</a></li>
+        <li><a href="#build-features">Build Features</a></li>
+        <li><a href="#build-requirements">Build Requirements</a></li>
+        <li><a href="#build-output">Build Output</a></li>
+      </ul>
+    </li>
+    <li><a href="#deployment">Deployment</a>
+      <ul>
+        <li><a href="#71-automated-deployment">7.1 Automated Deployment</a></li>
+        <li><a href="#72-deployment-process">7.2 Deployment Process</a></li>
+        <li><a href="#73-environment-configuration">7.3 Environment Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#81-hugo-configuration">8.1 Hugo Configuration</a></li>
+        <li><a href="#82-aws-configuration">8.2 AWS Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#security">Security</a>
+      <ul>
+        <li><a href="#91-content-protection">9.1 Content Protection</a></li>
+        <li><a href="#92-aws-security">9.2 AWS Security</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#101-common-issues">10.1 Common Issues</a></li>
+        <li><a href="#102-debug-mode">10.2 Debug Mode</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a>
+      <ul>
+        <li><a href="#111-development-guidelines">11.1 Development Guidelines</a></li>
+        <li><a href="#112-pull-request-process">11.2 Pull Request Process</a></li>
+      </ul>
+    </li>
+    <li><a href="#documentation-integration">Documentation Integration</a>
+      <ul>
+        <li><a href="#121-automatic-readme-integration">12.1 Automatic README Integration</a></li>
+        <li><a href="#122-documentation-structure">12.2 Documentation Structure</a></li>
+        <li><a href="#123-customization">12.3 Customization</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>Project Documentation</h1><h1 id="jeffs-link---personal-knowledge-base">
+  Jeff&rsquo;s Link - Personal Knowledge Base
+  <a class="anchor" href="#jeffs-link---personal-knowledge-base">#</a>
+</h1>
+<p>A personal knowledge base built with Hugo using the Book theme, deployed via AWS Amplify Console.</p>
+<h2 id="version-information">
+  Version Information
+  <a class="anchor" href="#version-information">#</a>
+</h2>
+<ul>
+<li>Hugo Version: 0.145.0</li>
+<li>Theme: Hugo Book Theme (latest)</li>
+<li>Node.js: 18.x or later</li>
+<li>AWS Amplify: Latest</li>
+</ul>
+<h2 id="table-of-contents">
+  Table of Contents
+  <a class="anchor" href="#table-of-contents">#</a>
+</h2>
+<ol>
+<li>
+  <a href="/#introduction">Introduction</a></li>
+<li>
+  <a href="/#architecture">Architecture</a></li>
+<li>
+  <a href="/#prerequisites">Prerequisites</a></li>
+<li>
+  <a href="/#project-structure">Project Structure</a></li>
+<li>
+  <a href="/#development-guide">Development Guide</a></li>
+<li>
+  <a href="/#build-process">Build Process</a></li>
+<li>
+  <a href="/#deployment">Deployment</a></li>
+<li>
+  <a href="/#configuration">Configuration</a></li>
+<li>
+  <a href="/#security">Security</a></li>
+<li>
+  <a href="/#troubleshooting">Troubleshooting</a></li>
+<li>
+  <a href="/#contributing">Contributing</a></li>
+<li>
+  <a href="/#documentation-integration">Documentation Integration</a></li>
+</ol>
+<h2 id="introduction">
+  Introduction
+  <a class="anchor" href="#introduction">#</a>
+</h2>
+<h3 id="11-overview">
+  1.1 Overview
+  <a class="anchor" href="#11-overview">#</a>
+</h3>
+<p>This is a personal knowledge base that:</p>
+<ul>
+<li>Uses Hugo as the static site generator</li>
+<li>Implements the Hugo Book theme</li>
+<li>Deploys via AWS Amplify Console</li>
+<li>Supports both light and dark themes</li>
+<li>Includes journal and download sections</li>
+</ul>
+<h3 id="12-features">
+  1.2 Features
+  <a class="anchor" href="#12-features">#</a>
+</h3>
+<ul>
+<li>Automated deployments via AWS Amplify</li>
+<li>CloudFront CDN for fast content delivery</li>
+<li>Image optimization</li>
+<li>Responsive design</li>
+<li>Dark mode support</li>
+<li>Search functionality</li>
+<li>Journal entries with date-based navigation</li>
+<li>Download section for resources</li>
+</ul>
+<h3 id="13-target-audience">
+  1.3 Target Audience
+  <a class="anchor" href="#13-target-audience">#</a>
+</h3>
+<ul>
+<li>Personal knowledge management</li>
+<li>Technical documentation</li>
+<li>Journal/blog content</li>
+<li>Resource sharing</li>
+</ul>
+<h2 id="architecture">
+  Architecture
+  <a class="anchor" href="#architecture">#</a>
+</h2>
+<h3 id="21-system-diagram">
+  2.1 System Diagram
+  <a class="anchor" href="#21-system-diagram">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>graph LR
+</span></span><span style="display:flex;"><span>    A[End User] --&gt; B(AWS Amplify Console)
+</span></span><span style="display:flex;"><span>    C[Git Repository] --&gt; B
+</span></span><span style="display:flex;"><span>    B --&gt; D{CDN}
+</span></span><span style="display:flex;"><span>    style D fill:#f9f,stroke:#333,stroke-width:2px
+</span></span></code></pre></div><h3 id="22-components">
+  2.2 Components
+  <a class="anchor" href="#22-components">#</a>
+</h3>
+<ul>
+<li><strong>Git Repository</strong>: Source code and content</li>
+<li><strong>AWS Amplify Console</strong>: Build and deployment</li>
+<li><strong>CloudFront CDN</strong>: Content delivery</li>
+<li><strong>Hugo</strong>: Static site generation</li>
+<li><strong>Hugo Book Theme</strong>: Base theme and styling</li>
+</ul>
+<h2 id="prerequisites">
+  Prerequisites
+  <a class="anchor" href="#prerequisites">#</a>
+</h2>
+<h3 id="required-tools">
+  Required Tools
+  <a class="anchor" href="#required-tools">#</a>
+</h3>
+<ul>
+<li>Hugo Extended (v0.120.4 or later)</li>
+<li>Git</li>
+<li>AWS CLI (for deployment)</li>
+</ul>
+<h3 id="optional-tools">
+  Optional Tools
+  <a class="anchor" href="#optional-tools">#</a>
+</h3>
+<ul>
+<li>ImageMagick (for image optimization)</li>
+</ul>
+<h3 id="aws-requirements">
+  AWS Requirements
+  <a class="anchor" href="#aws-requirements">#</a>
+</h3>
+<ul>
+<li>AWS Account with appropriate permissions</li>
+<li>S3 bucket for static hosting</li>
+<li>CloudFront distribution</li>
+<li>IAM user with deployment access</li>
+</ul>
+<h3 id="33-repository-setup">
+  3.3 Repository Setup
+  <a class="anchor" href="#33-repository-setup">#</a>
+</h3>
+<ul>
+<li>Git repository (GitHub, GitLab, or Bitbucket)</li>
+<li>Proper access permissions</li>
+<li>Branch protection rules (recommended)</li>
+</ul>
+<h2 id="project-structure">
+  Project Structure
+  <a class="anchor" href="#project-structure">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── archetypes/          # Content templates
+</span></span><span style="display:flex;"><span>├── assets/             # Source files
+</span></span><span style="display:flex;"><span>│   ├── scss/          # SCSS source files
+</span></span><span style="display:flex;"><span>│   ├── css/           # Compiled CSS
+</span></span><span style="display:flex;"><span>│   ├── images/        # Image assets
+</span></span><span style="display:flex;"><span>│   └── js/            # JavaScript files
+</span></span><span style="display:flex;"><span>├── content/           # Main content
+</span></span><span style="display:flex;"><span>├── config/           # Hugo configuration
+</span></span><span style="display:flex;"><span>├── data/             # Data files
+</span></span><span style="display:flex;"><span>├── layouts/          # Custom templates
+</span></span><span style="display:flex;"><span>├── static/           # Static files
+</span></span><span style="display:flex;"><span>├── themes/           # Hugo themes
+</span></span><span style="display:flex;"><span>└── scripts/          # Build scripts
+</span></span></code></pre></div><h2 id="development-guide">
+  Development Guide
+  <a class="anchor" href="#development-guide">#</a>
+</h2>
+<h3 id="51-getting-started">
+  5.1 Getting Started
+  <a class="anchor" href="#51-getting-started">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Clone repository</span>
+</span></span><span style="display:flex;"><span>git clone <span style="color:#f92672">[</span>your-repo-url<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>cd <span style="color:#f92672">[</span>repo-name<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>git submodule update --init --recursive
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install dependencies</span>
+</span></span><span style="display:flex;"><span>npm install
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Start development server</span>
+</span></span><span style="display:flex;"><span>hugo server -D
+</span></span></code></pre></div><h3 id="52-development-workflow">
+  5.2 Development Workflow
+  <a class="anchor" href="#52-development-workflow">#</a>
+</h3>
+<ol>
+<li>
+<p>Create new content:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># New journal entry</span>
+</span></span><span style="display:flex;"><span>hugo new content journal/2024-03-07.md
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># New download</span>
+</span></span><span style="display:flex;"><span>cp file.pdf content/_downloads/
+</span></span></code></pre></div></li>
+<li>
+<p>Edit content:</p>
+<ul>
+<li>Use your preferred editor</li>
+<li>Preview changes with <code>hugo server -D</code></li>
+<li>Test locally before committing</li>
+</ul>
+</li>
+<li>
+<p>Build and test:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Build site</span>
+</span></span><span style="display:flex;"><span>./scripts/build.sh
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check for issues</span>
+</span></span><span style="display:flex;"><span>hugo --check
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="53-navigation-and-templates">
+  5.3 Navigation and Templates
+  <a class="anchor" href="#53-navigation-and-templates">#</a>
+</h3>
+<p>The site uses custom templates for consistent navigation and link handling:</p>
+<ul>
+<li><code>layouts/_default/single.html</code>: Main template for single pages</li>
+<li><code>layouts/partials/journal-nav.html</code>: Handles journal entry navigation</li>
+<li><code>layouts/partials/_markup/render-link.html</code>: Processes internal links with case-insensitive handling</li>
+</ul>
+<p>Key features:</p>
+<ul>
+<li>Case-insensitive link handling for journal entries</li>
+<li>Automatic previous/next navigation for journal entries</li>
+<li>Consistent URL formatting across the site</li>
+<li>Custom styling for journal links</li>
+</ul>
+<h3 id="54-theme-customization">
+  5.4 Theme Customization
+  <a class="anchor" href="#54-theme-customization">#</a>
+</h3>
+<ul>
+<li>Custom styles: <code>assets/scss/_custom.scss</code></li>
+<li>Theme settings: <code>config/_default/config.toml</code></li>
+<li>Custom templates: <code>layouts/</code></li>
+</ul>
+<h2 id="build-process">
+  Build Process
+  <a class="anchor" href="#build-process">#</a>
+</h2>
+<h3 id="local-build">
+  Local Build
+  <a class="anchor" href="#local-build">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Development build</span>
+</span></span><span style="display:flex;"><span>hugo server -D
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Production build</span>
+</span></span><span style="display:flex;"><span>hugo --minify --theme hugo-book
+</span></span></code></pre></div><h3 id="build-features">
+  Build Features
+  <a class="anchor" href="#build-features">#</a>
+</h3>
+<ul>
+<li><strong>Asset Pipeline</strong>: Hugo&rsquo;s built-in asset pipeline handles SCSS compilation and optimization</li>
+<li><strong>Image Optimization</strong>: Automatic image optimization for JPG and PNG files</li>
+<li><strong>Minification</strong>: HTML, CSS, and JavaScript minification</li>
+<li><strong>Cache Management</strong>: Efficient caching for faster rebuilds</li>
+</ul>
+<h3 id="build-requirements">
+  Build Requirements
+  <a class="anchor" href="#build-requirements">#</a>
+</h3>
+<ul>
+<li>Hugo Extended (for SCSS processing)</li>
+<li>ImageMagick (optional, for image optimization)</li>
+</ul>
+<h3 id="build-output">
+  Build Output
+  <a class="anchor" href="#build-output">#</a>
+</h3>
+<ul>
+<li>Generated site in <code>public/</code> directory</li>
+<li>Optimized assets in <code>public/assets/</code></li>
+<li>Minified HTML, CSS, and JavaScript</li>
+</ul>
+<h2 id="deployment">
+  Deployment
+  <a class="anchor" href="#deployment">#</a>
+</h2>
+<h3 id="71-automated-deployment">
+  7.1 Automated Deployment
+  <a class="anchor" href="#71-automated-deployment">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Deploy to production</span>
+</span></span><span style="display:flex;"><span>./scripts/deploy.sh
+</span></span></code></pre></div><h3 id="72-deployment-process">
+  7.2 Deployment Process
+  <a class="anchor" href="#72-deployment-process">#</a>
+</h3>
+<ol>
+<li>Build site</li>
+<li>Commit changes</li>
+<li>Push to repository</li>
+<li>Trigger Amplify build</li>
+<li>Deploy to CDN</li>
+</ol>
+<h3 id="73-environment-configuration">
+  7.3 Environment Configuration
+  <a class="anchor" href="#73-environment-configuration">#</a>
+</h3>
+<ul>
+<li>Development: <code>config/development/config.toml</code></li>
+<li>Production: <code>config/production/config.toml</code></li>
+</ul>
+<h2 id="configuration">
+  Configuration
+  <a class="anchor" href="#configuration">#</a>
+</h2>
+<h3 id="81-hugo-configuration">
+  8.1 Hugo Configuration
+  <a class="anchor" href="#81-hugo-configuration">#</a>
+</h3>
+<ul>
+<li>Base settings in <code>config/_default/config.toml</code></li>
+<li>Environment-specific overrides</li>
+<li>Theme settings</li>
+<li>Security headers</li>
+</ul>
+<h3 id="82-aws-configuration">
+  8.2 AWS Configuration
+  <a class="anchor" href="#82-aws-configuration">#</a>
+</h3>
+<ul>
+<li>Amplify build settings</li>
+<li>CloudFront distribution</li>
+<li>Custom domain setup</li>
+</ul>
+<h2 id="security">
+  Security
+  <a class="anchor" href="#security">#</a>
+</h2>
+<h3 id="91-content-protection">
+  9.1 Content Protection
+  <a class="anchor" href="#91-content-protection">#</a>
+</h3>
+<ul>
+<li>Protected directories</li>
+<li>Git ignore rules</li>
+<li>Access controls</li>
+</ul>
+<h3 id="92-aws-security">
+  9.2 AWS Security
+  <a class="anchor" href="#92-aws-security">#</a>
+</h3>
+<ul>
+<li>IAM roles</li>
+<li>CloudFront policies</li>
+<li>HTTPS enforcement</li>
+</ul>
+<h2 id="troubleshooting">
+  Troubleshooting
+  <a class="anchor" href="#troubleshooting">#</a>
+</h2>
+<h3 id="101-common-issues">
+  10.1 Common Issues
+  <a class="anchor" href="#101-common-issues">#</a>
+</h3>
+<ol>
+<li>
+<p>Build Failures</p>
+<ul>
+<li>Check Hugo version</li>
+<li>Verify dependencies</li>
+<li>Check build logs</li>
+</ul>
+</li>
+<li>
+<p>Deployment Issues</p>
+<ul>
+<li>Verify AWS credentials</li>
+<li>Check Amplify settings</li>
+<li>Review CloudFront configuration</li>
+</ul>
+</li>
+<li>
+<p>Content Problems</p>
+<ul>
+<li>Validate markdown</li>
+<li>Check front matter</li>
+<li>Verify image paths</li>
+</ul>
+</li>
+</ol>
+<h3 id="102-debug-mode">
+  10.2 Debug Mode
+  <a class="anchor" href="#102-debug-mode">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Enable debug output</span>
+</span></span><span style="display:flex;"><span>hugo --debug
+</span></span></code></pre></div><h2 id="contributing">
+  Contributing
+  <a class="anchor" href="#contributing">#</a>
+</h2>
+<h3 id="111-development-guidelines">
+  11.1 Development Guidelines
+  <a class="anchor" href="#111-development-guidelines">#</a>
+</h3>
+<ul>
+<li>Follow existing code style</li>
+<li>Test changes locally</li>
+<li>Update documentation</li>
+<li>Create detailed PRs</li>
+</ul>
+<h3 id="112-pull-request-process">
+  11.2 Pull Request Process
+  <a class="anchor" href="#112-pull-request-process">#</a>
+</h3>
+<ol>
+<li>Fork repository</li>
+<li>Create feature branch</li>
+<li>Make changes</li>
+<li>Submit PR</li>
+<li>Address feedback</li>
+<li>Merge when approved</li>
+</ol>
+<h2 id="documentation-integration">
+  Documentation Integration
+  <a class="anchor" href="#documentation-integration">#</a>
+</h2>
+<h3 id="121-automatic-readme-integration">
+  12.1 Automatic README Integration
+  <a class="anchor" href="#121-automatic-readme-integration">#</a>
+</h3>
+<p>The project includes an automatic documentation integration feature that copies the main README.md file into the Hugo content structure during deployment. This ensures that:</p>
+<ul>
+<li>Project documentation is always up to date</li>
+<li>Documentation is accessible through the Hugo site navigation</li>
+<li>Documentation is searchable using the site&rsquo;s search functionality</li>
+<li>Documentation is properly formatted with the Hugo Book theme</li>
+</ul>
+<p>The integration process:</p>
+<ol>
+<li>Creates a <code>content/project</code> directory if it doesn&rsquo;t exist</li>
+<li>Copies the README.md with proper Hugo front matter</li>
+<li>Creates an index file with navigation links</li>
+<li>Integrates with the deployment process</li>
+</ol>
+<p>The documentation is accessible at:</p>
+<ul>
+<li>Main documentation: <code>/project/README/</code></li>
+<li>Project section: <code>/project/</code></li>
+</ul>
+<h3 id="122-documentation-structure">
+  12.2 Documentation Structure
+  <a class="anchor" href="#122-documentation-structure">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>content/
+</span></span><span style="display:flex;"><span>└── project/
+</span></span><span style="display:flex;"><span>    ├── README.md     # Main project documentation
+</span></span><span style="display:flex;"><span>    └── _index.md     # Project section landing page
+</span></span></code></pre></div><h3 id="123-customization">
+  12.3 Customization
+  <a class="anchor" href="#123-customization">#</a>
+</h3>
+<p>To customize the documentation integration:</p>
+<ol>
+<li>
+<p>Modify the front matter in <code>content/project/README.md</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#39;Project Documentation&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">description</span>: <span style="color:#e6db74">&#34;Documentation for Jeff&#39;s Link - Personal Knowledge Base&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">date</span>: <span style="color:#e6db74">2024-03-07</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">draft</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">weight</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div></li>
+<li>
+<p>Update the navigation links in <code>content/project/_index.md</code></p>
+</li>
+<li>
+<p>Modify the deployment script (<code>scripts/deploy.sh</code>) to change the integration behavior</p>
+</li>
+</ol>
+<h2 id="license">
+  License
+  <a class="anchor" href="#license">#</a>
+</h2>
+<p>
+  <a href="LICENSE">MIT License</a></p>
+<p>For theme documentation, see 
+  <a href="https://github.com/alex-shpak/hugo-book">Hugo Book Theme Documentation</a>.</p>
+
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#version-information">Version Information</a></li>
+    <li><a href="#table-of-contents">Table of Contents</a></li>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#11-overview">1.1 Overview</a></li>
+        <li><a href="#12-features">1.2 Features</a></li>
+        <li><a href="#13-target-audience">1.3 Target Audience</a></li>
+      </ul>
+    </li>
+    <li><a href="#architecture">Architecture</a>
+      <ul>
+        <li><a href="#21-system-diagram">2.1 System Diagram</a></li>
+        <li><a href="#22-components">2.2 Components</a></li>
+      </ul>
+    </li>
+    <li><a href="#prerequisites">Prerequisites</a>
+      <ul>
+        <li><a href="#required-tools">Required Tools</a></li>
+        <li><a href="#optional-tools">Optional Tools</a></li>
+        <li><a href="#aws-requirements">AWS Requirements</a></li>
+        <li><a href="#33-repository-setup">3.3 Repository Setup</a></li>
+      </ul>
+    </li>
+    <li><a href="#project-structure">Project Structure</a></li>
+    <li><a href="#development-guide">Development Guide</a>
+      <ul>
+        <li><a href="#51-getting-started">5.1 Getting Started</a></li>
+        <li><a href="#52-development-workflow">5.2 Development Workflow</a></li>
+        <li><a href="#53-navigation-and-templates">5.3 Navigation and Templates</a></li>
+        <li><a href="#54-theme-customization">5.4 Theme Customization</a></li>
+      </ul>
+    </li>
+    <li><a href="#build-process">Build Process</a>
+      <ul>
+        <li><a href="#local-build">Local Build</a></li>
+        <li><a href="#build-features">Build Features</a></li>
+        <li><a href="#build-requirements">Build Requirements</a></li>
+        <li><a href="#build-output">Build Output</a></li>
+      </ul>
+    </li>
+    <li><a href="#deployment">Deployment</a>
+      <ul>
+        <li><a href="#71-automated-deployment">7.1 Automated Deployment</a></li>
+        <li><a href="#72-deployment-process">7.2 Deployment Process</a></li>
+        <li><a href="#73-environment-configuration">7.3 Environment Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#81-hugo-configuration">8.1 Hugo Configuration</a></li>
+        <li><a href="#82-aws-configuration">8.2 AWS Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#security">Security</a>
+      <ul>
+        <li><a href="#91-content-protection">9.1 Content Protection</a></li>
+        <li><a href="#92-aws-security">9.2 AWS Security</a></li>
+      </ul>
+    </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#101-common-issues">10.1 Common Issues</a></li>
+        <li><a href="#102-debug-mode">10.2 Debug Mode</a></li>
+      </ul>
+    </li>
+    <li><a href="#contributing">Contributing</a>
+      <ul>
+        <li><a href="#111-development-guidelines">11.1 Development Guidelines</a></li>
+        <li><a href="#112-pull-request-process">11.2 Pull Request Process</a></li>
+      </ul>
+    </li>
+    <li><a href="#documentation-integration">Documentation Integration</a>
+      <ul>
+        <li><a href="#121-automatic-readme-integration">12.1 Automatic README Integration</a></li>
+        <li><a href="#122-documentation-structure">12.2 Documentation Structure</a></li>
+        <li><a href="#123-customization">12.3 Customization</a></li>
+      </ul>
+    </li>
+    <li><a href="#license">License</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
