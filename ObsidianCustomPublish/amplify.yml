@@ -8,6 +8,9 @@ env:
     HUGO_ENV: production
     # Time zone
     TZ: America/Los_Angeles
+    # S3 Content Bucket
+    CONTENT_BUCKET: obsidian-custom-publish-content
+    CONTENT_BUCKET_REGION: us-east-1
 
 frontend:
   phases:
@@ -18,14 +21,19 @@ frontend:
         - tar -xf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
         - export PATH=$PWD:$PATH
         - hugo version
+        # Pull content from S3
+        - echo "Pulling content from S3 bucket: ${CONTENT_BUCKET} (${CONTENT_BUCKET_REGION})"
+        - mkdir -p s3-content
+        - aws s3 sync s3://${CONTENT_BUCKET} s3-content/ --region ${CONTENT_BUCKET_REGION}
+        - echo "Content successfully pulled from S3"
     build:
       commands:
-        # Build site
-        - hugo --config config/production/config.toml --minify
+        # Build site with S3 content
+        - hugo --config config/production/config.toml --contentDir=s3-content --minify
   artifacts:
     baseDirectory: public
     files:
       - '**/*'
   cache:
     paths:
-      - public/**/*
+      - node_modules/**/*
