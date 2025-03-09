@@ -2,6 +2,9 @@
 baseURL = "https://jeffs.link/"
 environment = "production"
 
+# Content configuration
+# Note: contentDir is specified via --contentDir CLI flag in amplify.yml
+
 # Build settings
 buildDrafts = false
 buildFuture = false
