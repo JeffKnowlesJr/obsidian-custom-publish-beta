@@ -21,15 +21,28 @@ frontend:
         - tar -xf hugo_extended_${HUGO_VERSION}_Linux-64bit.tar.gz
         - export PATH=$PWD:$PATH
         - hugo version
+        # Verify AWS credentials
+        - echo "Verifying AWS credentials and permissions..."
+        - aws sts get-caller-identity
+        - aws s3 ls s3://${CONTENT_BUCKET} --region ${CONTENT_BUCKET_REGION} --summarize
         # Pull content from S3
         - echo "Pulling content from S3 bucket: ${CONTENT_BUCKET} (${CONTENT_BUCKET_REGION})"
         - mkdir -p s3-content
-        - aws s3 sync s3://${CONTENT_BUCKET} s3-content/ --region ${CONTENT_BUCKET_REGION}
+        - aws s3 sync s3://${CONTENT_BUCKET} s3-content/ --region ${CONTENT_BUCKET_REGION} --debug
+        - echo "S3 sync completed with exit code: $?"
+        - echo "Content directory listing:"
+        - ls -la s3-content/
         - echo "Content successfully pulled from S3"
     build:
       commands:
         # Build site with S3 content
-        - hugo --config config/production/config.toml --contentDir=s3-content --minify
+        - echo "Building Hugo site with content from S3..."
+        - echo "Content directory contents verification:"
+        - find s3-content -type f | wc -l
+        - hugo --config config/production/config.toml --contentDir=s3-content --minify --verbose
+        - echo "Hugo build completed with exit code: $?"
+        - echo "Generated site contents:"
+        - find public -type f | wc -l
   artifacts:
     baseDirectory: public
     files:

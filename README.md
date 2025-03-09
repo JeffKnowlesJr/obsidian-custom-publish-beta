@@ -200,16 +200,55 @@ This project uses AWS S3 to store content separately from code, enabling a clean
    - Hugo reads directly from your local `Link/` directory
    - Content remains private and is not tracked in git
 
-2. **Content Synchronization**:
+2. **Content Synchronization** (Obsidian → S3):
 
    - The `sync-to-s3.sh` script uploads selected content to S3
    - Excludes private notes, drafts, and Obsidian configuration
-   - Runs automatically before each git push via Git hook
+   - Runs automatically before each git push via Git hook (`pre-push`)
+   - Only publishable content reaches the S3 bucket
 
-3. **Amplify Builds**:
-   - Amplify pulls content from S3 during build
-   - Uses the same content for all environments
-   - No need to commit content files to git
+3. **Amplify Build Process** (S3 → Amplify):
+   - When AWS Amplify builds your site (triggered by git push or manually):
+     - It first authenticates with AWS using its service role
+     - Pulls content from the S3 bucket during the `preBuild` phase
+     - Creates a local `s3-content` directory with your Obsidian content
+     - Uses this content instead of a direct Git-based content
+   - The `amplify.yml` configuration handles this process:
+     ```yaml
+     preBuild:
+       commands:
+         # Install dependencies
+         ...
+         # Pull content from S3
+         - echo "Pulling content from S3 bucket: ${CONTENT_BUCKET}"
+         - aws s3 sync s3://${CONTENT_BUCKET} s3-content/
+     build:
+       commands:
+         # Build Hugo site with S3 content
+         - hugo --contentDir=s3-content --minify
+     ```
+   - This approach gives you complete separation between:
+     - Private notes (stay in your local Obsidian vault)
+     - Public content (synced to S3)
+     - Code/templates (stored in Git)
+
+### Complete Workflow
+
+The entire content publishing flow works like this:
+
+```
+[Edit in Obsidian] → [Git Commit] → [Git Push triggers pre-push hook] →
+[Content synced to S3] → [Code pushed to GitHub] →
+[Amplify detects changes] → [Amplify pulls content from S3] →
+[Hugo builds site with S3 content] → [Site deployed to web]
+```
+
+This architecture provides several benefits:
+
+- Your sensitive notes never leave your local system
+- Your Git repository stays clean with only code/configuration
+- Your deployment system always has access to the latest content
+- You can update code and content independently
 
 ### Setting Up IAM Permissions
 
@@ -218,13 +257,42 @@ For AWS Amplify to access the S3 content bucket, you need to configure IAM permi
 1. **Create IAM Policy**:
 
    - Policy document provided in `ObsidianCustomPublish/amplify-s3-policy.json`
-   - Grants read-only access to the content bucket
+   - Grants read-only access to the content bucket (`s3:GetObject`, `s3:ListBucket`)
+   - Specific to your content bucket: `obsidian-custom-publish-content`
 
-2. **Attach to Amplify Role**:
-   - Find your Amplify service role in the Amplify Console
-   - Attach the policy to this role
+2. **Attach to Amplify Service Role**:
+   - Identify your Amplify service role (typically `amplifyconsole-backend-role`)
+   - Attach the policy to this role using AWS Console or CLI:
+   ```bash
+   aws iam attach-role-policy \
+     --role-name amplifyconsole-backend-role \
+     --policy-arn arn:aws:iam::YOUR_ACCOUNT_ID:policy/AmplifyS3ContentAccess
+   ```
 
 Detailed instructions are available in `ObsidianCustomPublish/IAM-SETUP.md`.
+
+### Troubleshooting S3 → Amplify Flow
+
+If you encounter issues with the S3 content flow:
+
+1. **Check Build Logs** in the Amplify Console
+
+   - Look for messages about S3 access or content pulling
+   - Verify that content is being found and used during build
+
+2. **Verify IAM Permissions**
+
+   - Ensure the Amplify service role has the correct policy attached
+   - Check that the S3 bucket name matches in all configurations
+
+3. **Manual Testing**
+
+   - Try running `aws s3 ls s3://obsidian-custom-publish-content` with your AWS credentials
+   - Verify the content appears in S3 after a git push
+
+4. **Enhanced Logging**
+   - The `amplify.yml` includes detailed logging for the S3 operations
+   - Review these logs to pinpoint any issues in the process
 
 ## 📚 Documentation
 
@@ -256,3 +324,35 @@ If you need help or have questions:
 ---
 
 Made with ❤️ by the Obsidian Custom Publish team
+
+### 🐶 **Jellybean & Charlotte: The Cloud Warriors**
+
+**Meet Jellybean**: A tech-savvy dog with a nose for adventure. Jellybean's mission? To conquer the cloud and ensure every note from Obsidian reaches the digital frontier.
+
+**Enter Charlotte**: A powerhouse of a dog, Charlotte is Jellybean's trusted ally. With the heart of a gamer and the grit of a rancher, Charlotte brings a unique edge to the team.
+
+**Step 1: Obsidian Vault**  
+In the heart of the digital ranch, Jellybean and Charlotte prepare their notes. With the precision of a gamer, they ensure every detail is ready for the cloud.
+
+**Step 2: Sync to S3**  
+With a howl that echoes across the digital plains, Jellybean and Charlotte activate the `pre-push` hook. The `sync-to-s3.sh` script runs like a well-oiled machine, and Charlotte ensures every byte is securely uploaded to the S3 bucket.
+
+**Step 3: IAM Policy Patrol**  
+Charlotte, the guardian of the cloud, ensures the `AmplifyS3ContentAccess` policy is locked and loaded on the `amplifyconsole-backend-role`. No unauthorized access gets past this duo!
+
+**Step 4: Amplify's Arena**  
+As Amplify gears up for the build, Jellybean and Charlotte are there to guide the process. The `amplify.yml` file is their battle plan, ensuring Amplify pulls the right content from S3.
+
+**Step 5: The Grand Build**  
+With a triumphant bark, Charlotte watches as Amplify builds the site using the content from S3. Jellybean and Charlotte stand victorious as the site goes live, ready to conquer the digital world.
+
+**Jellybean & Charlotte's Checklist**:
+
+- 🐾 IAM policy attached? Locked and loaded!
+- 🐾 Content synced to S3? Mission accomplished!
+- 🐾 Amplify pulling content? On target!
+- 🐾 Site built and deployed? Victory!
+
+**Jellybean & Charlotte's Motto**: "In the cloud, we trust. On the ranch, we thrive. Together, we conquer!"
+
+**@DavKen**: Jellybean and Charlotte are ready for the next level. Join them on their epic cloud quest! 🐶🎮🤠
