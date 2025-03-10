@@ -71,7 +71,7 @@ repository/
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/jeffknowlesjr/obsidian-custom-publish.git
+   git clone https://github.com/JeffKnowlesJr/obsidian-custom-publish-beta.git
    cd obsidian-custom-publish
    ```
 

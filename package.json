@@ -1,0 +1,13 @@
+{
+  "name": "obsidian-hugo-project",
+  "version": "1.0.0",
+  "description": "A project to manage Obsidian and Hugo site",
+  "main": "index.js",
+  "scripts": {
+    "build": "hugo --config ObsidianCustomPublish/config/production/config.toml",
+    "serve": "hugo server --config ObsidianCustomPublish/config/development/config.toml"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {}
+}

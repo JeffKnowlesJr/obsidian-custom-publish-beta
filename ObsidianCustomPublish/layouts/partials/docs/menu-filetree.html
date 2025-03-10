@@ -13,7 +13,7 @@
     {{ $inSection := in $currentPage.RelPermalink $sectionPath }}
     
     <!-- Check if section folder exists -->
-    {{ $contentPath := printf "content%s" $sectionPath }}
+    {{ $contentPath := printf "../Link/Link%s" $sectionPath }}
     {{ if fileExists $contentPath }}
       {{ $items := readDir $contentPath }}
       {{ $hasContent := false }}
@@ -36,7 +36,7 @@
               {{ if .IsDir }}
                 {{ $dirName := .Name }}
                 {{ $dirPath := printf "%s/%s" $sectionPath $dirName }}
-                {{ $dirContentPath := printf "content%s" $dirPath }}
+                {{ $dirContentPath := printf "../Link/Link%s" $dirPath }}
                 
                 <!-- Check if directory has any content -->
                 {{ $hasDirContent := false }}
@@ -51,7 +51,7 @@
                 
                 <!-- Only show directory if it has content -->
                 {{ if $hasDirContent }}
-                  {{ $hasIndex := fileExists (printf "content%s/_index.md" $dirPath) }}
+                  {{ $hasIndex := fileExists (printf "../Link/Link%s/_index.md" $dirPath) }}
                   <li>
                     {{ if $hasIndex }}
                       <a href="{{ $dirPath }}/" class="{{ if in $currentPage.RelPermalink $dirPath }}active{{ end }}">{{ $dirName }}</a>
@@ -60,7 +60,7 @@
                     {{ end }}
                   </li>
                 {{ end }}
-              {{ else if and (ne .Name "_index.md") (findRE "\\.md$" .Name) }}
+              {{ else }}
                 {{ $fileName := replace .Name ".md" "" }}
                 {{ $filePath := printf "%s/%s" $sectionPath $fileName }}
                 <li>
