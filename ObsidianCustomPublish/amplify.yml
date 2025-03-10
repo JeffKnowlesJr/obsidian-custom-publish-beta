@@ -39,7 +39,11 @@ frontend:
         - echo "Building Hugo site with content from S3..."
         - echo "Content directory contents verification:"
         - find s3-content -type f | wc -l
-        - hugo --config config/production/config.toml --contentDir=s3-content --minify --verbose
+        - if [ "$HUGO_ENV" = "development" ]; then \
+          hugo --config config/production/config.toml --contentDir=../Link --minify --verbose; \
+          else \
+          hugo --config config/production/config.toml --contentDir=s3-content --minify --verbose; \
+          fi
         - echo "Hugo build completed with exit code: $?"
         - echo "Generated site contents:"
         - find public -type f | wc -l
